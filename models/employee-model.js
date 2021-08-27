@@ -3,25 +3,38 @@ const Schema = mongoose.Schema;
 
 const employeeSchema = new Schema({
     employee_id: {
-        type: Number
+        type: Number,
+        required: true,
+        maxlength: 5,
+        unique: true
     },
     firstName: {
-        type: String
+        type: String,
+        required: true,
+        maxlength: 30
     },
     lastName: {
-        type: String
+        type: String,
+        required: true,
+        maxlength: 30
     },
     date_of_birth: {
-        type: String
+        type: String,
+        required: true
     },
     designation: {
-        type: String
+        type: String,
+        required: true,
+        maxlength: 40
     },
     department: {
-        type: String
+        type: String,
+        required: true,
+        maxlength: 40
     },
     salary: {
-        type: Number
+        type: Number,
+        required: true
     }
 })
 

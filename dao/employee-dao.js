@@ -9,7 +9,7 @@ const employeeModel = require('../models/employee-model.js');
 const addEmployee = async (employeeData) => {
     await new employeeModel(employeeData).save();
     // for sql
-    // insert into employees value (employeeData);
+    // insert into employees values (employeeData);
 }
 
 
