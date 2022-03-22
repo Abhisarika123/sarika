@@ -1,27 +1,14 @@
 const route = require('express').Router();
-const employeeDao = require('../dao/employee-dao.js');
+const jwt = require('../authentication.js');
+const employeeController = require('../controller/employee-controller.js');
 
 /********** To save employee data ********/
-route.post("/addEmployee", async (req, res) => {
-    try {
-        await employeeDao.addEmployee(req.body);
-        return res.status(200).json({
-            message: 'Employee Added Successfully'
-        });
-    } catch (error) {
-        console.log(error);
-    }
-});
-
+route.post("/addEmployee", jwt.authenticate,employeeController.addEmployee);
 
 /********* To fetch all employees ********/
-route.get('/getEmployeesList', async (req, res) => {
-    try {
-        let employeesList = await employeeDao.getEmployeesList();
-        return res.status(200).json(employeesList);
-    } catch (error) {
-        console.log(error);
-    }
-})
+route.get('/getEmployeesList', jwt.authenticate,employeeController.getEmployeesList)
+
+
+
 
 module.exports = route
